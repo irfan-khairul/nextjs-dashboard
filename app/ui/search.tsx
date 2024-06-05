@@ -42,7 +42,7 @@ export function SearchCustomer({ placeholder }: { placeholder: string }) {
 
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams); //a Web API that provides utility methods for manipulating the URL query parameters
-    // params.set('page', '1');
+    params.set('page', '1');
     if (term) params.set('query', term);
     else params.delete('query');
 
