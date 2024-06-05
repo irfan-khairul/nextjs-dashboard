@@ -30,6 +30,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
+                defaultValue={'user@nextmail.com'}
                 className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="email"
                 type="email"
@@ -49,6 +50,7 @@ export default function LoginForm() {
             </label>
             <div className="relative">
               <input
+                defaultValue={123456}
                 className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
                 id="password"
                 type="password"
