@@ -1,10 +1,19 @@
 import CustomersTable from '@/app/ui/customers/table';
-import { lusitana } from '@/app/ui/fonts';
 import { Metadata } from 'next';
-import { fetchAllCustomer } from '@/app/lib/data';
+import { fetchFilteredCustomers } from '@/app/lib/data';
 
-export default async function Page() {
-  const customers = await fetchAllCustomer();
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const customers = await fetchFilteredCustomers(query);
 
   if (!customers) return null;
 
