@@ -1,14 +1,14 @@
-import { TableRowSkeleton } from '@/app/ui/skeletons';
-import React from 'react';
-import {} from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
+import { CustomerTableSkeleton, SearchSkeleton } from '@/app/ui/skeletons';
 
 export default function Loading() {
   return (
-    <div>
-      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+    <div className="w-full">
+      <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
         Customers
       </h1>
+      <SearchSkeleton />
+      <CustomerTableSkeleton />
     </div>
   );
 }

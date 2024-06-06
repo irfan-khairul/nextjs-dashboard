@@ -104,38 +104,67 @@ export default function DashboardSkeleton() {
   );
 }
 
-export function TableRowSkeleton() {
+export function TableRowSkeleton({ hasAction }: { hasAction: boolean }) {
+  if (hasAction)
+    return (
+      <tr className="w-full border-b border-gray-100 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+        {/* Customer Name and Image */}
+        <td className="relative overflow-hidden whitespace-nowrap py-3 pl-6 pr-3">
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-8 rounded-full bg-gray-100"></div>
+            <div className="h-6 w-24 rounded bg-gray-100"></div>
+          </div>
+        </td>
+        {/* Email */}
+        <td className="whitespace-nowrap px-3 py-3">
+          <div className="h-6 w-32 rounded bg-gray-100"></div>
+        </td>
+        {/* Amount */}
+        <td className="whitespace-nowrap px-3 py-3">
+          <div className="h-6 w-16 rounded bg-gray-100"></div>
+        </td>
+        {/* Date */}
+        <td className="whitespace-nowrap px-3 py-3">
+          <div className="h-6 w-16 rounded bg-gray-100"></div>
+        </td>
+        {/* Status */}
+        <td className="whitespace-nowrap px-3 py-3">
+          <div className="h-6 w-16 rounded bg-gray-100"></div>
+        </td>
+        {/* Actions */}
+        <td className="whitespace-nowrap py-3 pl-6 pr-3">
+          <div className="flex justify-end gap-3">
+            <div className="h-[38px] w-[38px] rounded bg-gray-100"></div>
+            <div className="h-[38px] w-[38px] rounded bg-gray-100"></div>
+          </div>
+        </td>
+      </tr>
+    );
+
   return (
-    <tr className="w-full border-b border-gray-100 last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
+    <tr className="group">
       {/* Customer Name and Image */}
-      <td className="relative overflow-hidden whitespace-nowrap py-3 pl-6 pr-3">
+      <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 text-sm text-black group-first-of-type:rounded-md group-last-of-type:rounded-md sm:pl-6">
         <div className="flex items-center gap-3">
-          <div className="h-8 w-8 rounded-full bg-gray-100"></div>
+          <div className="h-7 w-7 rounded-full bg-gray-100"></div>
           <div className="h-6 w-24 rounded bg-gray-100"></div>
         </div>
       </td>
       {/* Email */}
-      <td className="whitespace-nowrap px-3 py-3">
+      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
         <div className="h-6 w-32 rounded bg-gray-100"></div>
       </td>
-      {/* Amount */}
-      <td className="whitespace-nowrap px-3 py-3">
+      {/* Total Invoices */}
+      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+        <div className="h-6 w-8 rounded bg-gray-100"></div>
+      </td>
+      {/* Total Pending */}
+      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
         <div className="h-6 w-16 rounded bg-gray-100"></div>
       </td>
-      {/* Date */}
-      <td className="whitespace-nowrap px-3 py-3">
+      {/* Total Paid */}
+      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md">
         <div className="h-6 w-16 rounded bg-gray-100"></div>
-      </td>
-      {/* Status */}
-      <td className="whitespace-nowrap px-3 py-3">
-        <div className="h-6 w-16 rounded bg-gray-100"></div>
-      </td>
-      {/* Actions */}
-      <td className="whitespace-nowrap py-3 pl-6 pr-3">
-        <div className="flex justify-end gap-3">
-          <div className="h-[38px] w-[38px] rounded bg-gray-100"></div>
-          <div className="h-[38px] w-[38px] rounded bg-gray-100"></div>
-        </div>
       </td>
     </tr>
   );
@@ -205,12 +234,12 @@ export function InvoicesTableSkeleton() {
               </tr>
             </thead>
             <tbody className="bg-white">
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
+              <TableRowSkeleton hasAction={true} />
+              <TableRowSkeleton hasAction={true} />
+              <TableRowSkeleton hasAction={true} />
+              <TableRowSkeleton hasAction={true} />
+              <TableRowSkeleton hasAction={true} />
+              <TableRowSkeleton hasAction={true} />
             </tbody>
           </table>
         </div>
@@ -227,6 +256,54 @@ export function SearchSkeleton() {
       </label>
       <input className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500" />
       <MagnifyingGlassIcon className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+    </div>
+  );
+}
+
+export function CustomerTableSkeleton() {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="inline-block min-w-full align-middle">
+        <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+          <div className="md:hidden">
+            <InvoicesMobileSkeleton />
+            <InvoicesMobileSkeleton />
+            <InvoicesMobileSkeleton />
+            <InvoicesMobileSkeleton />
+            <InvoicesMobileSkeleton />
+            <InvoicesMobileSkeleton />
+          </div>
+          <table className="hidden min-w-full text-gray-900 md:table">
+            <thead className="rounded-md bg-gray-50 text-left text-sm font-normal">
+              <tr>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  Name
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Email
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Invoices
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Total Pending
+                </th>
+                <th scope="col" className="px-4 py-5 font-medium">
+                  Total Paid
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200 text-gray-900">
+              <TableRowSkeleton hasAction={false} />
+              <TableRowSkeleton hasAction={false} />
+              <TableRowSkeleton hasAction={false} />
+              <TableRowSkeleton hasAction={false} />
+              <TableRowSkeleton hasAction={false} />
+              <TableRowSkeleton hasAction={false} />
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
